@@ -1,7 +1,13 @@
-# This is all in one packet
+# All in one packet
+
+This is a part of the [PMIS System](http://pmisptc2.com.vn:3000/login).
+
 
 I'm not familiar with JS canvas, so I decided to build up a small TkInter application to use all the things I have 
 to perform the prediction. 
+
+## Problem Analysis
+Target - Build the Camera Calibration tool. I've implemented the core algorithm. The parameters need to be considered 
 
 ## Task list
 - [x] Use the Idea of InvoiceNet to build the application, first I need to clone the InvoiceNet GUI
