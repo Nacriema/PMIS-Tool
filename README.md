@@ -7,7 +7,19 @@ I'm not familiar with JS canvas, so I decided to build up a small TkInter applic
 to perform the prediction. 
 
 ## Problem Analysis
-Target - Build the Camera Calibration tool. I've implemented the core algorithm. The parameters need to be considered 
+Targets:
+
+Build the Camera Calibration tool. I've implemented the core algorithm. The parameters need to be considered to
+perform this Algorithm:
+  * Principal Point (Currently this will be achieved by getting the center of the current image)
+  * 2 Vanishing point:
+    * Each vanishing point, we need 2 line-pair. **CONSIDER THIS !!!**
+    * 2 Points for each line. (in pixel) **CONSIDER THIS**
+    * 2 Point on Top-left and Top-right of the Pylon (in pixel). For each point, we give the information about the 3D coordinate! **CONSIDER THIS !!!**
+
+  * Overall, we need: 4 lines ~ 8 points (required pixel value ~ canvas interaction), 2 points (required pixel value ~ canvas interaction) 
+
+
 
 ## Task list
 - [x] Use the Idea of InvoiceNet to build the application, first I need to clone the InvoiceNet GUI
