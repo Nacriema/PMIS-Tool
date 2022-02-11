@@ -1,0 +1,197 @@
+[2022-02-04 08:58:34,988] INFO: Trainer initialisation: run directory is /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2
+[2022-02-04 08:58:35,321] INFO: Config /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/configs/main_data_soft_dice_loss_batch_4.yml copied to run directory
+[2022-02-04 08:58:35,397] INFO: Using cuda device, nb_device is 1
+[2022-02-04 08:58:38,252] INFO: Dataset UAVid_Dataset instantiated with {'restricted_labels': [1, 2], 'img_size': [2160, 1200], 'normalize': True, 'data_augmentation': True, 'blur_radius_range': [0.2, 2], 'brightness_factor_range': [0.9, 1.1], 'contrast_factor_range': [0.5, 2], 'rotation_angle_range': [-10, 10], 'sampling_ratio_range': [1, 1], 'sampling_max_nb_pixels': 3500000.0, 'transposition_weights': [1.0, 0.0, 0.0, 0.0]}
+[2022-02-04 08:58:38,253] INFO: Found 3 classes, 200 train samples, 70 val samples
+[2022-02-04 08:58:38,256] INFO: Dataloaders instantiated with batch_size=4 and n_workers=4
+[2022-02-04 08:58:49,847] INFO: Using model res_unet18 with kwargs {'norm_layer': {'name': 'instance_norm', 'momentum': 0.1, 'affine': True, 'track_running_stats': False, 'num_groups': 32}, 'conv_as_maxpool': True, 'use_deconv': True}
+[2022-02-04 08:58:49,848] INFO: Number of trainable parameters: 14,415,040
+[2022-02-04 08:58:49,849] INFO: Using optimizer adam with kwargs {'lr': 0.001, 'weight_decay': 1e-06}
+[2022-02-04 08:58:49,850] INFO: Using scheduler multi_step with parameters {'gamma': 0.5, 'milestones': [30, 60, 80]}
+[2022-02-04 08:58:49,850] INFO: Using loss SoftDiceLoss()
+[2022-02-04 08:58:49,866] INFO: Epoch [1/100], Iter [1/50]: LR updated, lr = [0.001]
+[2022-02-04 09:04:53,003] INFO: Trainer initialisation: run directory is /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2
+[2022-02-04 09:04:53,014] INFO: Config /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/configs/main_data_soft_dice_loss_batch_4.yml copied to run directory
+[2022-02-04 09:04:53,059] INFO: Using cuda device, nb_device is 1
+[2022-02-04 09:04:53,443] INFO: Dataset UAVid_Dataset instantiated with {'restricted_labels': [1, 2], 'img_size': [1280, 720], 'normalize': True, 'data_augmentation': True, 'blur_radius_range': [0.2, 2], 'brightness_factor_range': [0.9, 1.1], 'contrast_factor_range': [0.5, 2], 'rotation_angle_range': [-10, 10], 'sampling_ratio_range': [1, 1], 'sampling_max_nb_pixels': 3500000.0, 'transposition_weights': [1.0, 0.0, 0.0, 0.0]}
+[2022-02-04 09:04:53,443] INFO: Found 3 classes, 200 train samples, 70 val samples
+[2022-02-04 09:04:53,444] INFO: Dataloaders instantiated with batch_size=4 and n_workers=4
+[2022-02-04 09:04:56,434] INFO: Using model res_unet18 with kwargs {'norm_layer': {'name': 'instance_norm', 'momentum': 0.1, 'affine': True, 'track_running_stats': False, 'num_groups': 32}, 'conv_as_maxpool': True, 'use_deconv': True}
+[2022-02-04 09:04:56,435] INFO: Number of trainable parameters: 14,415,040
+[2022-02-04 09:04:56,436] INFO: Using optimizer adam with kwargs {'lr': 0.001, 'weight_decay': 1e-06}
+[2022-02-04 09:04:56,437] INFO: Using scheduler multi_step with parameters {'gamma': 0.5, 'milestones': [30, 60, 80]}
+[2022-02-04 09:04:56,437] INFO: Using loss SoftDiceLoss()
+[2022-02-04 09:04:56,456] INFO: Epoch [1/100], Iter [1/50]: LR updated, lr = [0.001]
+[2022-02-04 09:05:55,989] INFO: Epoch [1/100], Iter [10/50]: train_loss = 0.6110, time/img = 1.1556s
+[2022-02-04 09:06:42,325] INFO: Epoch [1/100], Iter [20/50]: train_loss = 0.5370, time/img = 1.1473s
+[2022-02-04 09:07:28,384] INFO: Epoch [1/100], Iter [30/50]: train_loss = 0.4980, time/img = 1.1439s
+[2022-02-04 09:08:14,421] INFO: Epoch [1/100], Iter [40/50]: train_loss = 0.4694, time/img = 1.1432s
+[2022-02-04 09:09:00,249] INFO: Epoch [1/100], Iter [50/50]: train_loss = 0.4448, time/img = 1.1405s
+[2022-02-04 09:09:59,462] INFO: Epoch [2/100], Iter [10/50]: train_loss = 0.4315, time/img = 1.1507s
+[2022-02-04 09:10:45,686] INFO: Epoch [2/100], Iter [20/50]: train_loss = 0.4091, time/img = 1.1451s
+[2022-02-04 09:11:31,732] INFO: Epoch [2/100], Iter [30/50]: train_loss = 0.3749, time/img = 1.1418s
+[2022-02-04 09:12:17,881] INFO: Epoch [2/100], Iter [40/50]: train_loss = 0.3920, time/img = 1.1446s
+[2022-02-04 09:13:03,598] INFO: Epoch [2/100], Iter [50/50]: train_loss = 0.3832, time/img = 1.1385s
+[2022-02-04 09:14:03,824] INFO: Epoch [2/100], Iter [50/50]: val_loss = 0.3987
+[2022-02-04 09:14:03,825] INFO: Val metrics: overall_acc = 0.7725, avg_acc = 0.6579, weighted_mean_iou = 0.6514, avg_iou = 0.5206, iou_class_0 = 0.7973, iou_class_1 = 0.2812, iou_class_2 = 0.4833
+[2022-02-04 09:14:04,704] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 09:15:03,706] INFO: Epoch [3/100], Iter [10/50]: train_loss = 0.3552, time/img = 1.1496s
+[2022-02-04 09:15:50,069] INFO: Epoch [3/100], Iter [20/50]: train_loss = 0.3303, time/img = 1.1469s
+[2022-02-04 09:16:36,075] INFO: Epoch [3/100], Iter [30/50]: train_loss = 0.3430, time/img = 1.1429s
+[2022-02-04 09:17:22,053] INFO: Epoch [3/100], Iter [40/50]: train_loss = 0.3323, time/img = 1.1413s
+[2022-02-04 09:18:07,910] INFO: Epoch [3/100], Iter [50/50]: train_loss = 0.3728, time/img = 1.1418s
+[2022-02-04 09:19:06,868] INFO: Epoch [4/100], Iter [10/50]: train_loss = 0.3101, time/img = 1.1497s
+[2022-02-04 09:19:53,316] INFO: Epoch [4/100], Iter [20/50]: train_loss = 0.3427, time/img = 1.1476s
+[2022-02-04 09:20:39,345] INFO: Epoch [4/100], Iter [30/50]: train_loss = 0.3147, time/img = 1.1423s
+[2022-02-04 09:21:25,325] INFO: Epoch [4/100], Iter [40/50]: train_loss = 0.3045, time/img = 1.1411s
+[2022-02-04 09:22:11,076] INFO: Epoch [4/100], Iter [50/50]: train_loss = 0.3172, time/img = 1.1390s
+[2022-02-04 09:23:04,552] INFO: Epoch [4/100], Iter [50/50]: val_loss = 0.3582
+[2022-02-04 09:23:04,554] INFO: Val metrics: overall_acc = 0.7875, avg_acc = 0.6843, weighted_mean_iou = 0.6614, avg_iou = 0.5522, iou_class_0 = 0.7947, iou_class_1 = 0.4011, iou_class_2 = 0.4608
+[2022-02-04 09:23:05,437] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 09:24:05,163] INFO: Epoch [5/100], Iter [10/50]: train_loss = 0.3025, time/img = 1.1517s
+[2022-02-04 09:24:51,478] INFO: Epoch [5/100], Iter [20/50]: train_loss = 0.3002, time/img = 1.1471s
+[2022-02-04 09:25:37,568] INFO: Epoch [5/100], Iter [30/50]: train_loss = 0.2984, time/img = 1.1438s
+[2022-02-04 09:26:23,669] INFO: Epoch [5/100], Iter [40/50]: train_loss = 0.3077, time/img = 1.1437s
+[2022-02-04 09:27:09,520] INFO: Epoch [5/100], Iter [50/50]: train_loss = 0.2941, time/img = 1.1416s
+[2022-02-04 09:28:08,846] INFO: Epoch [6/100], Iter [10/50]: train_loss = 0.2913, time/img = 1.1523s
+[2022-02-04 09:28:55,114] INFO: Epoch [6/100], Iter [20/50]: train_loss = 0.2721, time/img = 1.1445s
+[2022-02-04 09:29:41,137] INFO: Epoch [6/100], Iter [30/50]: train_loss = 0.2692, time/img = 1.1423s
+[2022-02-04 09:30:27,250] INFO: Epoch [6/100], Iter [40/50]: train_loss = 0.2674, time/img = 1.1444s
+[2022-02-04 09:31:12,976] INFO: Epoch [6/100], Iter [50/50]: train_loss = 0.2589, time/img = 1.1391s
+[2022-02-04 09:32:05,709] INFO: Epoch [6/100], Iter [50/50]: val_loss = 0.2956
+[2022-02-04 09:32:05,710] INFO: Val metrics: overall_acc = 0.8293, avg_acc = 0.7474, weighted_mean_iou = 0.7221, avg_iou = 0.6185, iou_class_0 = 0.8451, iou_class_1 = 0.4599, iou_class_2 = 0.5504
+[2022-02-04 09:32:06,622] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 09:33:06,623] INFO: Epoch [7/100], Iter [10/50]: train_loss = 0.2568, time/img = 1.1507s
+[2022-02-04 09:33:52,930] INFO: Epoch [7/100], Iter [20/50]: train_loss = 0.2731, time/img = 1.1472s
+[2022-02-04 09:34:38,945] INFO: Epoch [7/100], Iter [30/50]: train_loss = 0.2639, time/img = 1.1427s
+[2022-02-04 09:35:24,997] INFO: Epoch [7/100], Iter [40/50]: train_loss = 0.2761, time/img = 1.1427s
+[2022-02-04 09:36:10,821] INFO: Epoch [7/100], Iter [50/50]: train_loss = 0.2942, time/img = 1.1411s
+[2022-02-04 09:37:09,911] INFO: Epoch [8/100], Iter [10/50]: train_loss = 0.2771, time/img = 1.1493s
+[2022-02-04 09:37:56,135] INFO: Epoch [8/100], Iter [20/50]: train_loss = 0.2641, time/img = 1.1462s
+[2022-02-04 09:38:42,166] INFO: Epoch [8/100], Iter [30/50]: train_loss = 0.2323, time/img = 1.1434s
+[2022-02-04 09:39:28,193] INFO: Epoch [8/100], Iter [40/50]: train_loss = 0.2408, time/img = 1.1427s
+[2022-02-04 09:40:14,021] INFO: Epoch [8/100], Iter [50/50]: train_loss = 0.2401, time/img = 1.1419s
+[2022-02-04 09:41:07,238] INFO: Epoch [8/100], Iter [50/50]: val_loss = 0.2744
+[2022-02-04 09:41:07,240] INFO: Val metrics: overall_acc = 0.8428, avg_acc = 0.7495, weighted_mean_iou = 0.7379, avg_iou = 0.6337, iou_class_0 = 0.8587, iou_class_1 = 0.4625, iou_class_2 = 0.5800
+[2022-02-04 09:41:08,132] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 09:42:08,006] INFO: Epoch [9/100], Iter [10/50]: train_loss = 0.2575, time/img = 1.1528s
+[2022-02-04 09:42:54,432] INFO: Epoch [9/100], Iter [20/50]: train_loss = 0.2261, time/img = 1.1494s
+[2022-02-04 09:43:40,606] INFO: Epoch [9/100], Iter [30/50]: train_loss = 0.2282, time/img = 1.1459s
+[2022-02-04 09:44:26,745] INFO: Epoch [9/100], Iter [40/50]: train_loss = 0.2415, time/img = 1.1462s
+[2022-02-04 09:45:12,725] INFO: Epoch [9/100], Iter [50/50]: train_loss = 0.2382, time/img = 1.1449s
+[2022-02-04 09:46:12,181] INFO: Epoch [10/100], Iter [10/50]: train_loss = 0.2200, time/img = 1.1526s
+[2022-02-04 09:46:58,519] INFO: Epoch [10/100], Iter [20/50]: train_loss = 0.2403, time/img = 1.1483s
+[2022-02-04 09:47:44,660] INFO: Epoch [10/100], Iter [30/50]: train_loss = 0.2259, time/img = 1.1457s
+[2022-02-04 09:48:30,719] INFO: Epoch [10/100], Iter [40/50]: train_loss = 0.2244, time/img = 1.1448s
+[2022-02-04 09:49:16,660] INFO: Epoch [10/100], Iter [50/50]: train_loss = 0.2327, time/img = 1.1433s
+[2022-02-04 09:50:09,071] INFO: Epoch [10/100], Iter [50/50]: val_loss = 0.2792
+[2022-02-04 09:50:09,073] INFO: Val metrics: overall_acc = 0.8413, avg_acc = 0.7269, weighted_mean_iou = 0.7333, avg_iou = 0.6176, iou_class_0 = 0.8625, iou_class_1 = 0.4063, iou_class_2 = 0.5838
+[2022-02-04 09:50:09,966] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 09:51:09,098] INFO: Epoch [11/100], Iter [10/50]: train_loss = 0.2250, time/img = 1.1505s
+[2022-02-04 09:51:55,364] INFO: Epoch [11/100], Iter [20/50]: train_loss = 0.2336, time/img = 1.1454s
+[2022-02-04 09:52:41,436] INFO: Epoch [11/100], Iter [30/50]: train_loss = 0.2245, time/img = 1.1436s
+[2022-02-04 09:53:27,416] INFO: Epoch [11/100], Iter [40/50]: train_loss = 0.2612, time/img = 1.1423s
+[2022-02-04 09:54:13,239] INFO: Epoch [11/100], Iter [50/50]: train_loss = 0.2181, time/img = 1.1415s
+[2022-02-04 09:55:12,628] INFO: Epoch [12/100], Iter [10/50]: train_loss = 0.2181, time/img = 1.1521s
+[2022-02-04 09:55:58,896] INFO: Epoch [12/100], Iter [20/50]: train_loss = 0.2158, time/img = 1.1464s
+[2022-02-04 09:56:45,081] INFO: Epoch [12/100], Iter [30/50]: train_loss = 0.2209, time/img = 1.1449s
+[2022-02-04 09:57:31,187] INFO: Epoch [12/100], Iter [40/50]: train_loss = 0.2060, time/img = 1.1432s
+[2022-02-04 09:58:17,050] INFO: Epoch [12/100], Iter [50/50]: train_loss = 0.2075, time/img = 1.1421s
+[2022-02-04 09:59:09,878] INFO: Epoch [12/100], Iter [50/50]: val_loss = 0.2501
+[2022-02-04 09:59:09,879] INFO: Val metrics: overall_acc = 0.8602, avg_acc = 0.7826, weighted_mean_iou = 0.7643, avg_iou = 0.6692, iou_class_0 = 0.8746, iou_class_1 = 0.5135, iou_class_2 = 0.6195
+[2022-02-04 09:59:10,775] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:00:10,014] INFO: Epoch [13/100], Iter [10/50]: train_loss = 0.1888, time/img = 1.1513s
+[2022-02-04 10:00:56,186] INFO: Epoch [13/100], Iter [20/50]: train_loss = 0.2184, time/img = 1.1439s
+[2022-02-04 10:01:42,274] INFO: Epoch [13/100], Iter [30/50]: train_loss = 0.2022, time/img = 1.1450s
+[2022-02-04 10:02:28,396] INFO: Epoch [13/100], Iter [40/50]: train_loss = 0.1919, time/img = 1.1438s
+[2022-02-04 10:03:14,218] INFO: Epoch [13/100], Iter [50/50]: train_loss = 0.1936, time/img = 1.1402s
+[2022-02-04 10:04:13,521] INFO: Epoch [14/100], Iter [10/50]: train_loss = 0.1986, time/img = 1.1506s
+[2022-02-04 10:04:59,740] INFO: Epoch [14/100], Iter [20/50]: train_loss = 0.2178, time/img = 1.1450s
+[2022-02-04 10:05:45,789] INFO: Epoch [14/100], Iter [30/50]: train_loss = 0.2086, time/img = 1.1425s
+[2022-02-04 10:06:31,930] INFO: Epoch [14/100], Iter [40/50]: train_loss = 0.2029, time/img = 1.1431s
+[2022-02-04 10:07:17,868] INFO: Epoch [14/100], Iter [50/50]: train_loss = 0.2065, time/img = 1.1435s
+[2022-02-04 10:08:11,393] INFO: Epoch [14/100], Iter [50/50]: val_loss = 0.2626
+[2022-02-04 10:08:11,394] INFO: Val metrics: overall_acc = 0.8544, avg_acc = 0.7481, weighted_mean_iou = 0.7531, avg_iou = 0.6417, iou_class_0 = 0.8769, iou_class_1 = 0.4369, iou_class_2 = 0.6113
+[2022-02-04 10:08:12,293] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:09:12,163] INFO: Epoch [15/100], Iter [10/50]: train_loss = 0.2007, time/img = 1.1481s
+[2022-02-04 10:09:58,411] INFO: Epoch [15/100], Iter [20/50]: train_loss = 0.1813, time/img = 1.1464s
+[2022-02-04 10:10:44,437] INFO: Epoch [15/100], Iter [30/50]: train_loss = 0.1984, time/img = 1.1426s
+[2022-02-04 10:11:30,513] INFO: Epoch [15/100], Iter [40/50]: train_loss = 0.2039, time/img = 1.1435s
+[2022-02-04 10:12:16,418] INFO: Epoch [15/100], Iter [50/50]: train_loss = 0.2092, time/img = 1.1430s
+[2022-02-04 10:13:15,484] INFO: Epoch [16/100], Iter [10/50]: train_loss = 0.1764, time/img = 1.1503s
+[2022-02-04 10:14:01,876] INFO: Epoch [16/100], Iter [20/50]: train_loss = 0.1969, time/img = 1.1466s
+[2022-02-04 10:14:47,927] INFO: Epoch [16/100], Iter [30/50]: train_loss = 0.1967, time/img = 1.1440s
+[2022-02-04 10:15:33,952] INFO: Epoch [16/100], Iter [40/50]: train_loss = 0.1920, time/img = 1.1429s
+[2022-02-04 10:16:19,802] INFO: Epoch [16/100], Iter [50/50]: train_loss = 0.1859, time/img = 1.1413s
+[2022-02-04 10:17:12,856] INFO: Epoch [16/100], Iter [50/50]: val_loss = 0.2509
+[2022-02-04 10:17:12,858] INFO: Val metrics: overall_acc = 0.8588, avg_acc = 0.7729, weighted_mean_iou = 0.7576, avg_iou = 0.6661, iou_class_0 = 0.8684, iou_class_1 = 0.5352, iou_class_2 = 0.5946
+[2022-02-04 10:17:13,750] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:18:13,458] INFO: Epoch [17/100], Iter [10/50]: train_loss = 0.1757, time/img = 1.1526s
+[2022-02-04 10:18:59,756] INFO: Epoch [17/100], Iter [20/50]: train_loss = 0.1988, time/img = 1.1459s
+[2022-02-04 10:19:45,847] INFO: Epoch [17/100], Iter [30/50]: train_loss = 0.1871, time/img = 1.1443s
+[2022-02-04 10:20:31,793] INFO: Epoch [17/100], Iter [40/50]: train_loss = 0.1847, time/img = 1.1416s
+[2022-02-04 10:21:17,705] INFO: Epoch [17/100], Iter [50/50]: train_loss = 0.1805, time/img = 1.1431s
+[2022-02-04 10:22:16,691] INFO: Epoch [18/100], Iter [10/50]: train_loss = 0.1818, time/img = 1.1503s
+[2022-02-04 10:23:02,876] INFO: Epoch [18/100], Iter [20/50]: train_loss = 0.1960, time/img = 1.1436s
+[2022-02-04 10:23:48,788] INFO: Epoch [18/100], Iter [30/50]: train_loss = 0.1768, time/img = 1.1403s
+[2022-02-04 10:24:34,903] INFO: Epoch [18/100], Iter [40/50]: train_loss = 0.1931, time/img = 1.1439s
+[2022-02-04 10:25:20,676] INFO: Epoch [18/100], Iter [50/50]: train_loss = 0.1775, time/img = 1.1396s
+[2022-02-04 10:26:13,904] INFO: Epoch [18/100], Iter [50/50]: val_loss = 0.2505
+[2022-02-04 10:26:13,905] INFO: Val metrics: overall_acc = 0.8596, avg_acc = 0.7638, weighted_mean_iou = 0.7614, avg_iou = 0.6580, iou_class_0 = 0.8788, iou_class_1 = 0.4774, iou_class_2 = 0.6177
+[2022-02-04 10:26:14,787] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:27:14,795] INFO: Epoch [19/100], Iter [10/50]: train_loss = 0.1750, time/img = 1.1521s
+[2022-02-04 10:28:01,179] INFO: Epoch [19/100], Iter [20/50]: train_loss = 0.1535, time/img = 1.1468s
+[2022-02-04 10:28:47,169] INFO: Epoch [19/100], Iter [30/50]: train_loss = 0.1638, time/img = 1.1426s
+[2022-02-04 10:29:33,160] INFO: Epoch [19/100], Iter [40/50]: train_loss = 0.1844, time/img = 1.1415s
+[2022-02-04 10:30:18,916] INFO: Epoch [19/100], Iter [50/50]: train_loss = 0.1723, time/img = 1.1395s
+[2022-02-04 10:31:18,165] INFO: Epoch [20/100], Iter [10/50]: train_loss = 0.1561, time/img = 1.1514s
+[2022-02-04 10:32:04,401] INFO: Epoch [20/100], Iter [20/50]: train_loss = 0.1768, time/img = 1.1455s
+[2022-02-04 10:32:50,280] INFO: Epoch [20/100], Iter [30/50]: train_loss = 0.1798, time/img = 1.1389s
+[2022-02-04 10:33:36,380] INFO: Epoch [20/100], Iter [40/50]: train_loss = 0.1804, time/img = 1.1432s
+[2022-02-04 10:34:22,135] INFO: Epoch [20/100], Iter [50/50]: train_loss = 0.1626, time/img = 1.1398s
+[2022-02-04 10:35:15,440] INFO: Epoch [20/100], Iter [50/50]: val_loss = 0.2397
+[2022-02-04 10:35:15,442] INFO: Val metrics: overall_acc = 0.8679, avg_acc = 0.7779, weighted_mean_iou = 0.7716, avg_iou = 0.6781, iou_class_0 = 0.8798, iou_class_1 = 0.5235, iou_class_2 = 0.6312
+[2022-02-04 10:35:16,334] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:36:16,464] INFO: Epoch [21/100], Iter [10/50]: train_loss = 0.1701, time/img = 1.1489s
+[2022-02-04 10:37:02,731] INFO: Epoch [21/100], Iter [20/50]: train_loss = 0.1781, time/img = 1.1455s
+[2022-02-04 10:37:48,798] INFO: Epoch [21/100], Iter [30/50]: train_loss = 0.1646, time/img = 1.1447s
+[2022-02-04 10:38:34,909] INFO: Epoch [21/100], Iter [40/50]: train_loss = 0.1635, time/img = 1.1441s
+[2022-02-04 10:39:20,674] INFO: Epoch [21/100], Iter [50/50]: train_loss = 0.1735, time/img = 1.1396s
+[2022-02-04 10:40:20,032] INFO: Epoch [22/100], Iter [10/50]: train_loss = 0.1654, time/img = 1.1498s
+[2022-02-04 10:41:06,412] INFO: Epoch [22/100], Iter [20/50]: train_loss = 0.1652, time/img = 1.1466s
+[2022-02-04 10:41:52,505] INFO: Epoch [22/100], Iter [30/50]: train_loss = 0.1802, time/img = 1.1438s
+[2022-02-04 10:42:38,470] INFO: Epoch [22/100], Iter [40/50]: train_loss = 0.1737, time/img = 1.1412s
+[2022-02-04 10:43:24,329] INFO: Epoch [22/100], Iter [50/50]: train_loss = 0.1726, time/img = 1.1418s
+[2022-02-04 10:44:17,318] INFO: Epoch [22/100], Iter [50/50]: val_loss = 0.2413
+[2022-02-04 10:44:17,319] INFO: Val metrics: overall_acc = 0.8588, avg_acc = 0.8013, weighted_mean_iou = 0.7635, avg_iou = 0.6760, iou_class_0 = 0.8719, iou_class_1 = 0.5619, iou_class_2 = 0.5944
+[2022-02-04 10:44:18,203] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:45:18,340] INFO: Epoch [23/100], Iter [10/50]: train_loss = 0.1787, time/img = 1.1491s
+[2022-02-04 10:46:04,607] INFO: Epoch [23/100], Iter [20/50]: train_loss = 0.1551, time/img = 1.1454s
+[2022-02-04 10:46:50,660] INFO: Epoch [23/100], Iter [30/50]: train_loss = 0.1744, time/img = 1.1437s
+[2022-02-04 10:47:36,671] INFO: Epoch [23/100], Iter [40/50]: train_loss = 0.1806, time/img = 1.1425s
+[2022-02-04 10:48:22,535] INFO: Epoch [23/100], Iter [50/50]: train_loss = 0.1631, time/img = 1.1419s
+[2022-02-04 10:49:21,669] INFO: Epoch [24/100], Iter [10/50]: train_loss = 0.1572, time/img = 1.1477s
+[2022-02-04 10:50:07,935] INFO: Epoch [24/100], Iter [20/50]: train_loss = 0.1487, time/img = 1.1451s
+[2022-02-04 10:50:54,024] INFO: Epoch [24/100], Iter [30/50]: train_loss = 0.1592, time/img = 1.1430s
+[2022-02-04 10:51:40,104] INFO: Epoch [24/100], Iter [40/50]: train_loss = 0.1490, time/img = 1.1431s
+[2022-02-04 10:52:25,897] INFO: Epoch [24/100], Iter [50/50]: train_loss = 0.1647, time/img = 1.1395s
+[2022-02-04 10:53:19,179] INFO: Epoch [24/100], Iter [50/50]: val_loss = 0.2267
+[2022-02-04 10:53:19,181] INFO: Val metrics: overall_acc = 0.8700, avg_acc = 0.8094, weighted_mean_iou = 0.7809, avg_iou = 0.6922, iou_class_0 = 0.8853, iou_class_1 = 0.5535, iou_class_2 = 0.6379
+[2022-02-04 10:53:20,120] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 10:54:20,458] INFO: Epoch [25/100], Iter [10/50]: train_loss = 0.1612, time/img = 1.1518s
+[2022-02-04 10:55:06,552] INFO: Epoch [25/100], Iter [20/50]: train_loss = 0.1683, time/img = 1.1424s
+[2022-02-04 10:55:52,564] INFO: Epoch [25/100], Iter [30/50]: train_loss = 0.1638, time/img = 1.1431s
+[2022-02-04 10:56:38,728] INFO: Epoch [25/100], Iter [40/50]: train_loss = 0.1657, time/img = 1.1441s
+[2022-02-04 10:57:24,546] INFO: Epoch [25/100], Iter [50/50]: train_loss = 0.1540, time/img = 1.1408s
+[2022-02-04 10:58:23,315] INFO: Epoch [26/100], Iter [10/50]: train_loss = 0.1442, time/img = 1.1488s
+[2022-02-04 10:59:09,495] INFO: Epoch [26/100], Iter [20/50]: train_loss = 0.1579, time/img = 1.1434s
+[2022-02-04 10:59:55,439] INFO: Epoch [26/100], Iter [30/50]: train_loss = 0.1372, time/img = 1.1413s
+[2022-02-04 11:00:41,551] INFO: Epoch [26/100], Iter [40/50]: train_loss = 0.1602, time/img = 1.1447s
+[2022-02-04 11:01:27,328] INFO: Epoch [26/100], Iter [50/50]: train_loss = 0.1597, time/img = 1.1398s
+[2022-02-04 11:02:20,468] INFO: Epoch [26/100], Iter [50/50]: val_loss = 0.2298
+[2022-02-04 11:02:20,469] INFO: Val metrics: overall_acc = 0.8740, avg_acc = 0.7937, weighted_mean_iou = 0.7821, avg_iou = 0.6926, iou_class_0 = 0.8864, iou_class_1 = 0.5471, iou_class_2 = 0.6442
+[2022-02-04 11:02:21,382] INFO: Model saved at /content/drive/MyDrive/Unet_Tree_Segmentation/VegetSeg_2/models/Full_data_Soft_Dice_Loss_V2/model.pkl
+[2022-02-04 11:03:21,340] INFO: Epoch [27/100], Iter [10/50]: train_loss = 0.1446, time/img = 1.1498s
+[2022-02-04 11:04:07,517] INFO: Epoch [27/100], Iter [20/50]: train_loss = 0.1435, time/img = 1.1442s
+[2022-02-04 11:04:53,646] INFO: Epoch [27/100], Iter [30/50]: train_loss = 0.1574, time/img = 1.1435s
+[2022-02-04 11:05:39,661] INFO: Epoch [27/100], Iter [40/50]: train_loss = 0.1479, time/img = 1.1423s

@@ -1,0 +1,105 @@
+Welcome to PMIS Tool help!
+
+This tool is used to measure the approach of tree in powerline. It includes:
+
+- VegSeg tool for tree segmentation.
+- Line tracing for powerline extraction.
+- Calibration tool for survey camera calibration.
+- Photogrammetry tool to measure the vegetation approach.
+
+---
+
+Open Files:
+
+The 'Open Files' function allows you to open one or multiple files into PMIS Tool.
+
+On clicking the button, you're prompted with a dialog box where you can select all the files (JPG ,PNG, JPEG) you want to open. Once you're done, you can cycle through each image in the list and do measurement base on them.
+
+---
+
+Open Directory:
+
+The 'Open Directory' function works in the same way as the 'Open Files' function, but it allows you to open all files inside a particular directory in a single shot.
+
+---
+
+Set Save Directory:
+
+The 'Set Save Directory' function allows you to set the directory where the extracted information will be saved when 'Save Information' button is clicked.
+
+---
+
+Clear Page:
+
+The 'Clear Page' option lets you clear any modification you made to the current page.
+
+---
+
+Search Text:
+
+This option will be removed later !!!
+---
+
+Extract Text:
+
+This function will be removed later !!!
+
+The 'Extract Text' option allows you to draw a bounding box on the current page and get the text that you marked with the bounding box.
+
+On clicking the button, the viewer becomes drawable. You're expected to draw a bounding box around the text you want to extract from the page. Once done, click on the 'Extract Text' button again.
+
+On doing so, you will be prompted with the word that's closest to the bounding box you drew.
+
+If text extraction fails, it's possible that there is no extractable text in your invoice. In this case, try again after running the OCR on the selected invoice.
+
+---
+
+Run OCR:
+
+This function will be removed of update later !!!
+
+---
+
+Clear Invoice Queue:
+
+This option can be used to clear the list of images that have been loaded into PMIS Tool.
+
+---
+
+Next/Previous File:
+
+The 'Next File' and 'Previous File' options allow you to cycle through the list of images that were opened using InvoiceNet.
+
+---
+
+Viewer:
+
+The Page Tool Bar gives you functions to manipulate the image.
+- Use the 'Next Page' and 'Previous Page' buttons to cycle through the different pages in your invoice.
+- Use the 'Last Page' and 'First Page' buttons to directly go to the pages on the extreme ends.
+- Use the 'Zoom In', 'Zoom Out' and 'Fit-To-Screen' buttons to make the current page bigger or smaller.
+- Use the 'Rotate' button to rotate images.
+
+---
+
+Run Segment:
+
+Before segmenting information from an image, you need to select the classes that should be extracted. The field checkboxes become active automatically if VegSeg Net is able to perform segmentation.
+
+After selecting the fields to be segmented, click on the 'Run Segment' button and VegSeg Net will try to segment those fields from the current image and display the extracted information in the logging space.
+
+---
+
+Save Information:
+
+This filed must be updated later !!!
+
+After information extraction, the logging space will show you the extracted fields in the form of a python dictionary. You can edit the extracted fields here if there are any discrepancies.
+
+Once you are done, click on the 'Save Information' button and InvoiceNet will save your extracted information as a JSON file. If a JSON file with the same name already exists, the newly extracted fields will be added to this file.
+
+---
+
+Load Labels:
+
+The 'Load Labels' button can be used to upload labels from an existing JSON file into the logging space.

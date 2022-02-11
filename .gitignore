@@ -1,0 +1,14 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Folders
+my_experiment/
+
+# pkl files
+*.pkl
+
+# Zip files
+*.zip

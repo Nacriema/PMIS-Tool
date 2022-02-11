@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Created on Jan 13 15:15:51 2022
+
+@author: Nacriema
+
+Refs:
+
+"""
+OCR_GROUND_TRUTH_FMT = '{}_ocr.{}'
+SEG_GROUND_TRUTH_FMT = '{}_Labels.{}'
+MODEL_FILE = 'model.pkl'
+
+# COLOR
+VOID_COLOR = (0, 0, 0)  # Black
+VEGETATION_MISC_COLOR = (192, 192, 0)  # Yellow shit
+TREE_COLOR = (128, 128, 0)  # Yellow gray
+
+# LABEL
+VOID_LABEL = 0
+VEGETATION_MISC_LABEL = 1
+TREE_LABEL = 2
+
+# MAPPINGS
+COLOR_TO_LABEL_MAPPING = {
+    VEGETATION_MISC_COLOR: VEGETATION_MISC_LABEL,
+    TREE_COLOR: TREE_LABEL,
+}
+
+LABEL_TO_COLOR_MAPPING = {
+    VEGETATION_MISC_LABEL: VEGETATION_MISC_COLOR,
+    TREE_LABEL: TREE_COLOR,
+}
