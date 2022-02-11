@@ -17,7 +17,7 @@ to perform the prediction.
 - [ ] Add UI and Functional code for Measurement task
 
 Result (Completed on Feb 12, 2022)
-* Base on [InvoiceNet GUI](https://github.com/naiveHobo/InvoiceNet) and then do som modification with [Sun-Valley Tkinter theme](/home/hp/Pictures/Screenshot from 2022-02-11 19-22-08.png)
+* Base on [InvoiceNet GUI](https://github.com/naiveHobo/InvoiceNet) and then do som modification with [Sun-Valley Tkinter theme](https://github.com/rdbende/Sun-Valley-ttk-theme)
 
 ![](./readme_images/im1.png)
 
