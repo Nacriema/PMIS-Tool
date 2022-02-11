@@ -7,8 +7,9 @@ __pycache__/
 # Folders
 my_experiment/
 
-# pkl files
+# weight files
 *.pkl
+*.pth
 
 # Zip files
 *.zip
