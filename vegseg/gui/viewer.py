@@ -262,7 +262,11 @@ class ImageViewer(Frame):
         if rect is None:
             return
         self.clear()
+
+        print(f'Rect before reproject: {rect}')
         rect = self._reproject_bbox(rect)
+        print(f'Rect after reproject: {rect}')
+
         page = self.image.pages[self.pageidx - 1]
         words = page.extract_words()
         min_x = 1000000

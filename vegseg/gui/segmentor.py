@@ -311,24 +311,25 @@ class Segmentor(Frame):
                                  highlightbackground=self.border_color,
                                  highlightthickness=1)
 
-        camera_calibration_tool = Frame(notebook,
-                                        bg=self.background,
-                                        bd=0,
-                                        relief=SUNKEN,
-                                        highlightbackground=self.border_color,
-                                        highlightthickness=1)
+        camera_calibration_tab = Frame(notebook,
+                                       bg=self.background,
+                                       bd=0,
+                                       relief=SUNKEN,
+                                       highlightbackground=self.border_color,
+                                       highlightthickness=1)
 
-        vegetation_measurement_tool = Frame(notebook,
-                                            bg=self.background,
-                                            bd=0,
-                                            relief=SUNKEN,
-                                            highlightbackground=self.border_color,
-                                            highlightthickness=1)
+        vegetation_measurement_tab = Frame(notebook,
+                                           bg=self.background,
+                                           bd=0,
+                                           relief=SUNKEN,
+                                           highlightbackground=self.border_color,
+                                           highlightthickness=1)
 
+        # ORDER OF TABS HERE
         notebook.add(segmentation_tab, text="Segmentation Tool")
+        notebook.add(camera_calibration_tab, text="Camera Calibration Tool")
         notebook.add(line_tracing_tab, text="Line Tracing Tool")
-        notebook.add(camera_calibration_tool, text="Camera Calibration Tool")
-        notebook.add(vegetation_measurement_tool, text="Vegetation Measurement Tool")
+        notebook.add(vegetation_measurement_tab, text="Vegetation Measurement Tool")
 
         # BEGIN: Edit Segmentation Tab
         # segmentation_tab.grid(row=0, column=0, sticky='news')
@@ -431,6 +432,58 @@ class Segmentor(Frame):
                   fg=FIELDS_FG_COLORS[idx],
                   font=("Arial", 12)).grid(row=idx // 2, column=3 if idx % 2 else 1, sticky='nws')
         # END: Segmentation Tab
+
+        # BEGIN: Edit Calibration Tab
+
+        camera_calibration_tab.columnconfigure(0, weight=1)
+        camera_calibration_tab.columnconfigure(1, weight=4)
+        camera_calibration_tab.columnconfigure(2, weight=1)
+        camera_calibration_tab.rowconfigure(0, weight=1)
+        camera_calibration_tab.rowconfigure(1, weight=1)
+        camera_calibration_tab.rowconfigure(2, weight=1)
+
+        camera_frame = ttk.LabelFrame(master=camera_calibration_tab,
+                                      text="Camera calibration field",
+                                      border=1,
+                                      relief=SUNKEN)
+        camera_frame.grid(row=1, column=1, padx=(20, 10), pady=(20, 10), sticky='news')
+
+        camera_frame.columnconfigure(0, weight=1)
+        camera_frame.columnconfigure(1, weight=4)
+        camera_frame.columnconfigure(2, weight=4)
+        camera_frame.columnconfigure(3, weight=1)
+        camera_frame.rowconfigure(0, weight=0)
+        camera_frame.rowconfigure(1, weight=1)
+        camera_frame.rowconfigure(2, weight=1)
+
+        self.option_menu_list = ["", "Line 1", "Line 2", "Line 3", "Line 4", "Ref point 1 pixel", "Ref point 2 pixel",
+                                 "Ref point 1 3D pos", "Ref point 2 3D pos"]
+        self.var_4 = StringVar(value=self.option_menu_list[1])
+
+        option_menu = ttk.OptionMenu(camera_frame,
+                                     self.var_4,
+                                     *self.option_menu_list)
+
+        option_menu.grid(row=1, column=1, padx=(20, 10), pady=(20, 10), sticky='news')
+        Label(camera_frame,
+              text="Choose instance:",
+              font=("Arial", 12)).grid(row=0, column=1, padx=(20, 10), pady=(20, 10), sticky='nws')
+        # option_menu.pack(expand=True, fill=BOTH, side=BOTTOM)
+
+        entry = ttk.Entry(camera_frame)
+        Label(camera_frame,
+              text="Value:",
+              font=("Arial", 12)).grid(row=0, column=2, padx=(20, 10), pady=(20, 10), sticky='nws')
+
+        # The insertion is just insert the string to the field
+        entry.insert(0, "Entry")
+        entry.grid(row=1, column=2, padx=(20, 10), pady=(20, 10), sticky='news')
+
+        # The button which handle processing
+        calibration_button = ttk.Button(camera_calibration_tab, text="Run Calibration", style="Accent.TButton")
+        calibration_button.grid(row=1, column=2, padx=(10, 20), pady=(10, 20), sticky='w')
+
+        # END: Calibration Tab
 
         # Main Frame
         main_frame.columnconfigure(0, weight=1)

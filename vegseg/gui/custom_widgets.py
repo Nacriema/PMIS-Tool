@@ -144,7 +144,7 @@ class DisplayCanvas(Frame):
         self.canvas = Canvas(self, bg=background, highlightbackground='#353535')
         self.canvas.grid(row=0, column=0, sticky='news')
 
-        # TODO: Change  the Scrollbar UI
+        # TODO: Change the Scrollbar UI
 
         # Old code
         # self.sbarv = Scrollbar(self, orient=VERTICAL, bg=background, highlightbackground=highlight)
@@ -159,8 +159,8 @@ class DisplayCanvas(Frame):
         self.canvas.config(yscrollcommand=self.sbarv.set)
         self.canvas.config(xscrollcommand=self.sbarh.set)
 
-        self.sbarv.grid(row=0, column=1, stick=N+S)
-        self.sbarh.grid(row=1, column=0, sticky=E+W)
+        self.sbarv.grid(row=0, column=1, stick=N + S)
+        self.sbarh.grid(row=1, column=0, sticky=E + W)
 
         self.canvas.bind('<Left>', self.on_left)
         self.canvas.bind('<Right>', self.on_right)
@@ -172,6 +172,8 @@ class DisplayCanvas(Frame):
         self.canvas.bind("<ButtonRelease-1>", self.on_button_release)
 
         self.rect = None
+        self.line = None
+
         self.image = None
         self.image_obj = None
         self.pil_image = None
@@ -182,30 +184,70 @@ class DisplayCanvas(Frame):
 
         self.canvas.config(scrollregion=self.canvas.bbox("all"))
 
+    # TODO: This function will create a rectangle while user press and move the cursor. Try to modify this !!!
+    # NEW FUNCTION
+
     def on_button_press(self, event):
         self.canvas.focus_set()
         self.start_x = self.canvas.canvasx(event.x)
         self.start_y = self.canvas.canvasy(event.y)
 
-        if not self.rect and self.draw:
-            self.rect = self.canvas.create_rectangle(self.x, self.y, 1, 1, outline='red')
+        if not self.line and self.draw:
+            self.line = self.canvas.create_line(self.x, self.y, 1, 1, fill='red')
+
+    # TODO: I change the behavior of on_move_press function, instead
 
     def on_move_press(self, event):
         cur_x = self.canvas.canvasx(event.x)
         cur_y = self.canvas.canvasy(event.y)
 
         w, h = self.canvas.winfo_width(), self.canvas.winfo_height()
-        if event.x > 0.9*w:
+        if event.x > 0.9 * w:
             self.on_right()
-        elif event.x < 0.1*w:
+        elif event.x < 0.1 * w:
             self.on_left()
-        if event.y > 0.9*h:
+        if event.y > 0.9 * h:
             self.on_down()
-        elif event.y < 0.1*h:
+        elif event.y < 0.1 * h:
             self.on_up()
 
+        # TODO: HINT - Can I change the shape of the draw based on some value ?
         if self.draw:
-            self.canvas.coords(self.rect, self.start_x, self.start_y, cur_x, cur_y)
+            # This is used to update the line or rectangle during the drawing process
+            self.canvas.coords(self.line, self.start_x, self.start_y, cur_x, cur_y)
+            print(f"Finish draw")
+            print(f'Begin coordinate: start_x = {self.start_x}, start_y = {self.start_y}')
+            print(f'End coordinate: end_x = {cur_x}, end_y = {cur_y}')
+
+    # OLD FUNCTION
+    # def on_button_press(self, event):
+    #     self.canvas.focus_set()
+    #     self.start_x = self.canvas.canvasx(event.x)
+    #     self.start_y = self.canvas.canvasy(event.y)
+    #
+    #     if not self.rect and self.draw:
+    #         self.rect = self.canvas.create_rectangle(self.x, self.y, 1, 1, outline='red')
+
+    # OLD FUNCTION
+    # def on_move_press(self, event):
+    #     cur_x = self.canvas.canvasx(event.x)
+    #     cur_y = self.canvas.canvasy(event.y)
+    #
+    #     w, h = self.canvas.winfo_width(), self.canvas.winfo_height()
+    #     if event.x > 0.9*w:
+    #         self.on_right()
+    #     elif event.x < 0.1*w:
+    #         self.on_left()
+    #     if event.y > 0.9*h:
+    #         self.on_down()
+    #     elif event.y < 0.1*h:
+    #         self.on_up()
+    #
+    #     if self.draw:
+    #         # This function is use to update the boudary region of Tkinter shape
+    #         self.canvas.coords(self.rect, self.start_x, self.start_y, cur_x, cur_y)
+    #         print(f'Before reprojected coordinate')
+    #         print(f'start_x = {self.start_x}, start_y = {self.start_y}, curr_x = {cur_x}, curr_y = {cur_y}')
 
     def on_left(self, event=None):
         self.canvas.xview_scroll(-1, 'units')
@@ -253,15 +295,21 @@ class DisplayCanvas(Frame):
         self.canvas.config(xscrollcommand=self.sbarh.set)
         self.canvas.config(scrollregion=self.canvas.bbox("all"))
         self.rect = None
+        self.line = None
 
     def reset(self):
         self.canvas.delete("all")
+
         self.rect = None
+        self.line = None
+
         self.image = None
         self.image_obj = None
         self.pil_image = None
         self.draw = False
 
+    # TODO: This function help me to change the coordinate effect, this function then use to correct my coordinate
+    #  problem !!!
     def get_rect(self):
         w, h = self.pil_image.size
         x0, y0 = self.canvas.coords(self.image_obj)
