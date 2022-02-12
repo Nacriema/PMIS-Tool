@@ -29,7 +29,7 @@ perform this Algorithm:
 - [x] Enhance the UI by adding more tabs
 
 * Add UI and Functional code for Camera calibration task:
-  - [ ] Add UI
+  - [x] Add UI
   - [ ] Functional Code
 - [ ] Add UI and Functional code for Line tracing task 
 - [ ] Add UI and Functional code for Measurement task
