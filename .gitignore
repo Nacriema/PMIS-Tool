@@ -8,6 +8,7 @@ __pycache__/
 
 # Folders
 my_experiment/
+calibration_results/
 
 # weight files
 *.pkl
