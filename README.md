@@ -34,7 +34,7 @@ perform this Algorithm:
 - [ ] Add UI and Functional code for Line tracing task 
 - [ ] Add UI and Functional code for Measurement task
 
-Result (Completed on Feb 12, 2022)
+## Result (Completed on Feb 12, 2022)
 * Base on [InvoiceNet GUI](https://github.com/naiveHobo/InvoiceNet) and then do som modification with [Sun-Valley Tkinter theme](https://github.com/rdbende/Sun-Valley-ttk-theme)
 
 ![](./readme_images/im1.png)
@@ -47,7 +47,14 @@ Result (Completed on Feb 12, 2022)
 
 ![](./readme_images/im3.png)
 
+
+## Result (Completed on Feb 14, 2022)
 * Camera Calibration Tab
 
 ![](./readme_images/im4.png)
 
+![](./readme_images/im5.png)
+
+
+## Problems
+- [x] I can not read User input text inside Entry in Tkinter: resolved, because I deleted it's value before read it (stupid mistake)
