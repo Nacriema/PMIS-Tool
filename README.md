@@ -30,7 +30,7 @@ perform this Algorithm:
 
 * Add UI and Functional code for Camera calibration task:
   - [x] Add UI
-  - [ ] Functional Code
+  - [x] Functional Code
 - [ ] Add UI and Functional code for Line tracing task 
 - [ ] Add UI and Functional code for Measurement task
 
