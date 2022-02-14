@@ -35,7 +35,7 @@ perform this Algorithm:
 - [ ] Add UI and Functional code for Measurement task
 
 ## Result (Completed on Feb 12, 2022)
-* Base on [InvoiceNet GUI](https://github.com/naiveHobo/InvoiceNet) and then do som modification with [Sun-Valley Tkinter theme](https://github.com/rdbende/Sun-Valley-ttk-theme)
+* Base on [InvoiceNet GUI](https://github.com/naiveHobo/InvoiceNet) and then do some modification with [Sun-Valley Tkinter theme](https://github.com/rdbende/Sun-Valley-ttk-theme)
 
 ![](./readme_images/im1.png)
 
