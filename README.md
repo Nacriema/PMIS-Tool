@@ -29,10 +29,14 @@ perform this Algorithm:
 - [x] Enhance the UI by adding more tabs
 
 * Add UI and Functional code for Camera calibration task:
-  - [x] Add UI
+  - [x] Add UI Code
   - [x] Functional Code
-- [ ] Add UI and Functional code for Line tracing task 
-- [ ] Add UI and Functional code for Measurement task
+* Add UI and Functional code for Line tracing task:
+  - [ ] Add UI Code 
+  - [ ] Add Functional Code  
+* Add UI and Functional code for Measurement task:
+  - [ ] Add UI Code
+  - [ ] Add Functional Code
 
 ## Result (Completed on Feb 12, 2022)
 * Base on [InvoiceNet GUI](https://github.com/naiveHobo/InvoiceNet) and then do some modification with [Sun-Valley Tkinter theme](https://github.com/rdbende/Sun-Valley-ttk-theme)
@@ -58,3 +62,8 @@ perform this Algorithm:
 
 ## Problems
 - [x] I can not read User input text inside Entry in Tkinter: resolved, because I deleted it's value before read it (stupid mistake)
+- [ ] Check instance of image is added before running command in Add Property button.
+- [ ] Variable handler in Calibration Tab (reset button etc ...)
+- [ ] Break Tabs into Classes 
+- [ ] For Camera Calibration Tab, I need to save all possible case into the json for comparison purpose, let the user choose
+the appropriate params
