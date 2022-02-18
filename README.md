@@ -61,7 +61,7 @@ perform this Algorithm:
 
 ## Result (Completed on Feb 18, 2022)
 
-![]()
+![](./readme_images/im6.png)
 
 
 ## Problems
