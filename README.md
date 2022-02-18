@@ -32,8 +32,8 @@ perform this Algorithm:
   - [x] Add UI Code
   - [x] Functional Code
 * Add UI and Functional code for Line tracing task:
-  - [ ] Add UI Code 
-  - [ ] Add Functional Code  
+  - [x] Add UI Code 
+  - [x] Add Functional Code  
 * Add UI and Functional code for Measurement task:
   - [ ] Add UI Code
   - [ ] Add Functional Code
@@ -58,6 +58,10 @@ perform this Algorithm:
 ![](./readme_images/im4.png)
 
 ![](./readme_images/im5.png)
+
+## Result (Completed on Feb 18, 2022)
+
+![]()
 
 
 ## Problems
