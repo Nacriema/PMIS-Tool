@@ -23,9 +23,11 @@ import torch
 from ..models import load_model_from_path
 from ..utils import coerce_to_path_and_check_exist
 from ..utils.path import MODELS_PATH
-from ..utils.constant import MODEL_FILE, LABEL_TO_COLOR_MAPPING
+from ..utils.constant import MODEL_FILE
 from ..utils.image import LabeledArray2Image
 import numpy as np
+
+from ..calibration import process, visualization
 
 import simplejson
 from tkinter import *
@@ -37,6 +39,11 @@ from .. import FIELDS
 from .custom_widgets import MenuBox, HoverButton, Logger, StoppableThread
 from .help_box import HelpBox
 from .viewer import ImageViewer
+
+
+# Test for break code
+from .calibration_tab import CalibrationTab
+from .linetracing_tab import LineTracingTab
 
 
 class Segmentor(Frame):
@@ -56,15 +63,28 @@ class Segmentor(Frame):
         self.thread = None
         self.running = False
         self.save_dir = '.'
+
+        # Variables used in Camera Calibration task
+        # self.entry_values = ['0',
+        #                      '1',
+        #                      '2',
+        #                      '3',
+        #                      '4',
+        #                      '5',
+        #                      '6',
+        #                      '7',
+        #                      '8']  # Values for Options in Option menus, I set it as the list
+
         self._init_ui()
 
     def _init_ui(self):
         ws = self.master.winfo_screenwidth()
         hs = self.master.winfo_screenheight()
         h = hs - 100
-        w = (int(h / 1.414) + 100) * 2
+        w = (int(h / 1.414) + 250) * 2
         x = (ws / 2) - (w / 2)
         y = (hs / 2) - (h / 2)
+        print(f'w = {w}, h = {h}, x={x}, y={y}')
         self.master.geometry('%dx%d+%d+%d' % (w, h, x, y))
         self.master.maxsize(w, h)
         self.master.minsize(w, h)
@@ -81,6 +101,7 @@ class Segmentor(Frame):
 
         # TODO: Image Viewer is a bunch of items, contains interaction on top as well the canvas interaction (Display
         #  Canvas), see the custom Image Viewer class, and Display Canvas class  for more information
+
         self.viewer = ImageViewer(self)
 
         interface = Frame(self, bg=self.background, bd=0, relief=SUNKEN,
@@ -304,19 +325,22 @@ class Segmentor(Frame):
                                  highlightbackground=self.border_color,
                                  highlightthickness=1)
 
-        line_tracing_tab = Frame(notebook,
-                                 bg=self.background,
-                                 bd=0,
-                                 relief=SUNKEN,
-                                 highlightbackground=self.border_color,
-                                 highlightthickness=1)
+        # line_tracing_tab = Frame(notebook,
+        #                          bg=self.background,
+        #                          bd=0,
+        #                          relief=SUNKEN,
+        #                          highlightbackground=self.border_color,
+        #                          highlightthickness=1)
 
-        camera_calibration_tab = Frame(notebook,
-                                       bg=self.background,
-                                       bd=0,
-                                       relief=SUNKEN,
-                                       highlightbackground=self.border_color,
-                                       highlightthickness=1)
+        line_tracing_tab = LineTracingTab(mother=self)
+
+        # camera_calibration_tab = Frame(notebook,
+        #                                bg=self.background,
+        #                                bd=0,
+        #                                relief=SUNKEN,
+        #                                highlightbackground=self.border_color,
+        #                                highlightthickness=1)
+        camera_calibration_tab = CalibrationTab(mother=self)
 
         vegetation_measurement_tab = Frame(notebook,
                                            bg=self.background,
@@ -329,7 +353,7 @@ class Segmentor(Frame):
         notebook.add(segmentation_tab, text="Segmentation Tool")
         notebook.add(camera_calibration_tab, text="Camera Calibration Tool")
         notebook.add(line_tracing_tab, text="Line Tracing Tool")
-        notebook.add(vegetation_measurement_tab, text="Vegetation Measurement Tool")
+        notebook.add(vegetation_measurement_tab, text="Measurement Tool")
 
         # BEGIN: Edit Segmentation Tab
         # segmentation_tab.grid(row=0, column=0, sticky='news')
@@ -354,34 +378,6 @@ class Segmentor(Frame):
                                         activebackground=self.background)
 
         self.start_button.grid(row=1, column=2, pady=10, padx=20, sticky='w')
-
-        # TODO: Change theme here
-        # Field Checkboxes
-        # Old code
-        # field_param = Frame(param_frame,
-        #                     bg=self.background, bd=0,
-        #                     relief=SUNKEN,
-        #                     highlightbackground=self.border_color,
-        #                     highlightthickness=1)
-        #
-        # field_param.grid(row=1, column=1, sticky='news')
-
-        # field_frame = Frame(field_param,
-        #                     bg=self.checkbox_color,
-        #                     bd=0, relief=SUNKEN,
-        #                     highlightbackground=self.border_color,
-        #                     highlightthickness=1)
-        #
-        # field_frame.pack(expand=True, fill=BOTH)
-        #
-        # Label(field_frame,
-        #       text="Segmentation field:",
-        #       width=30,
-        #       bg=self.checkbox_color,
-        #       anchor='w',
-        #       fg="black",
-        #       font=("Arial", 12, "bold")).pack(side=TOP, fill=X, padx=5, pady=5)
-
         field_frame = ttk.LabelFrame(master=segmentation_tab,
                                      text="Segmentation field",
                                      border=1,
@@ -408,17 +404,6 @@ class Segmentor(Frame):
             if os.path.exists('./models/invoicenet/'):
                 state = key in os.listdir('./models/invoicenet/')
             state = True
-
-            # Adjust the check button and color of the tick icon
-            # Checkbutton(checkbox_frame,
-            #             fg=FIELDS_FG_COLORS[idx],
-            #             bg=self.checkbox_color,
-            #             activebackground=self.checkbox_color,
-            #             variable=self.checkboxes[key],
-            #             state="normal" if state else "disabled",
-            #             highlightthickness=0).grid(row=idx // 2, column=2 if idx % 2 else 0, sticky='news',
-            #                                        padx=(10, 0))
-
             # TODO: Change Checkbutton style, use sun-valley theme design
             ttk.Checkbutton(checkbox_frame,
                             variable=self.checkboxes[key],
@@ -434,56 +419,12 @@ class Segmentor(Frame):
         # END: Segmentation Tab
 
         # BEGIN: Edit Calibration Tab
-
-        camera_calibration_tab.columnconfigure(0, weight=1)
-        camera_calibration_tab.columnconfigure(1, weight=4)
-        camera_calibration_tab.columnconfigure(2, weight=1)
-        camera_calibration_tab.rowconfigure(0, weight=1)
-        camera_calibration_tab.rowconfigure(1, weight=1)
-        camera_calibration_tab.rowconfigure(2, weight=1)
-
-        camera_frame = ttk.LabelFrame(master=camera_calibration_tab,
-                                      text="Camera calibration field",
-                                      border=1,
-                                      relief=SUNKEN)
-        camera_frame.grid(row=1, column=1, padx=(20, 10), pady=(20, 10), sticky='news')
-
-        camera_frame.columnconfigure(0, weight=1)
-        camera_frame.columnconfigure(1, weight=4)
-        camera_frame.columnconfigure(2, weight=4)
-        camera_frame.columnconfigure(3, weight=1)
-        camera_frame.rowconfigure(0, weight=0)
-        camera_frame.rowconfigure(1, weight=1)
-        camera_frame.rowconfigure(2, weight=1)
-
-        self.option_menu_list = ["", "Line 1", "Line 2", "Line 3", "Line 4", "Ref point 1 pixel", "Ref point 2 pixel",
-                                 "Ref point 1 3D pos", "Ref point 2 3D pos"]
-        self.var_4 = StringVar(value=self.option_menu_list[1])
-
-        option_menu = ttk.OptionMenu(camera_frame,
-                                     self.var_4,
-                                     *self.option_menu_list)
-
-        option_menu.grid(row=1, column=1, padx=(20, 10), pady=(20, 10), sticky='news')
-        Label(camera_frame,
-              text="Choose instance:",
-              font=("Arial", 12)).grid(row=0, column=1, padx=(20, 10), pady=(20, 10), sticky='nws')
-        # option_menu.pack(expand=True, fill=BOTH, side=BOTTOM)
-
-        entry = ttk.Entry(camera_frame)
-        Label(camera_frame,
-              text="Value:",
-              font=("Arial", 12)).grid(row=0, column=2, padx=(20, 10), pady=(20, 10), sticky='nws')
-
-        # The insertion is just insert the string to the field
-        entry.insert(0, "Entry")
-        entry.grid(row=1, column=2, padx=(20, 10), pady=(20, 10), sticky='news')
-
-        # The button which handle processing
-        calibration_button = ttk.Button(camera_calibration_tab, text="Run Calibration", style="Accent.TButton")
-        calibration_button.grid(row=1, column=2, padx=(10, 20), pady=(10, 20), sticky='w')
-
+        # I moved these code
         # END: Calibration Tab
+
+        # BEGIN: Edit Line Tracing tab
+        # I moved these code
+        # END: Line Tracing Tab
 
         # Main Frame
         main_frame.columnconfigure(0, weight=1)
@@ -531,6 +472,13 @@ class Segmentor(Frame):
                     highlightthickness=0,
                     activebackground=self.background).grid(row=0, column=2, padx=10)
 
+    # Functional code, break code into multiple part
+    # Calibration Tab: DONE
+    # BEGIN: Calibration Tab
+    # 1. First we need to trace the choice we made inside the OptionMenu, OK
+    # 2. AFTER user interact with Canvas, the value then will be saved to the current option menu, we can get this from
+    # END: Calibration Tab
+
     def _extract(self):
         path = self.paths[self.pathidx]
 
@@ -554,7 +502,7 @@ class Segmentor(Frame):
                                                                                        'normalize'])
             _ = model.eval()
             self.logger.log(f'Image size is: {image.size}')
-            normalize = True
+            # normalize = True
             inp = np.array(image, dtype=np.float32) / 255
             if normalize:
                 inp = ((inp - inp.mean(axis=(0, 1))) / (inp.std(axis=(0, 1)) + 10 ** -7))
@@ -577,7 +525,7 @@ class Segmentor(Frame):
                     restricted_colors.append(RGB_COLOR_FOR_FIELDS[value])
                     restricted_labels.append(value)
 
-            label_idx_color_mapping = {l: c for l, c in
+            label_idx_color_mapping = {_: c for _, c in
                                        zip(restricted_labels, restricted_colors)}
 
             pred_img = LabeledArray2Image.convert(pred, label_idx_color_mapping)
@@ -594,7 +542,7 @@ class Segmentor(Frame):
             self.pathidx += 1
 
             # 3. Update the viewer
-            self._load_file()
+            self.load_file()
             self.logger.log('DONE')
 
         #     pdf = pytesseract.image_to_pdf_or_hocr(image, extension='pdf')
@@ -730,13 +678,13 @@ class Segmentor(Frame):
         if self.pathidx == len(self.paths) - 1 or len(self.paths) == 0:
             return
         self.pathidx += 1
-        self._load_file()
+        self.load_file()
 
     def _prev_file(self):
         if self.pathidx == 0 or len(self.paths) == 0:
             return
         self.pathidx -= 1
-        self._load_file()
+        self.load_file()
 
     # TODO: This function here need to be renew for later task
     # def _run_ocr(self):
@@ -761,7 +709,7 @@ class Segmentor(Frame):
     #     self.viewer.display_pdf(self.image)
 
     # TODO: Change here, I not display pdf, display image instead !!!
-    def _load_file(self):
+    def load_file(self):
         """
         This function use index in path index in self.paths variable to open image for view in canvas
         :return:
@@ -772,8 +720,6 @@ class Segmentor(Frame):
         try:
             if filename.split('.')[-1].lower() in ['jpg', 'png']:
                 image = Image.open(path)
-                # pdf = io.BytesIO(pytesseract.image_to_pdf_or_hocr(image, extension='pdf'))
-                # self.image = pdfplumber.load(pdf)
                 self.image = image
             else:
                 # TODO: Avoid using pdfplumber !
@@ -801,7 +747,8 @@ class Segmentor(Frame):
                                                        ('PNG files', '*.png'),
                                                        ('all files', '.*')],
                                             initialdir='.',
-                                            title="Select files", multiple=True)
+                                            title="Select files",
+                                            multiple=True)
         if not paths or paths == '':
             return
         paths = [path for path in paths if os.path.basename(path).split('.')[-1].lower() in ['jpg', 'png', 'jpeg']]
@@ -809,7 +756,7 @@ class Segmentor(Frame):
 
         print(f'self.paths = {self.paths}')
         self.pathidx += 1
-        self._load_file()
+        self.load_file()
 
     def _open_dir(self):
         dir_name = filedialog.askdirectory(initialdir='.', title="Select Directory Containing Invoices")
@@ -822,7 +769,7 @@ class Segmentor(Frame):
         if not self.paths:
             return
         self.pathidx += 1
-        self._load_file()
+        self.load_file()
 
     def _clear_queue(self):
         self.viewer.reset()

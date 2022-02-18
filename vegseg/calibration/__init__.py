@@ -70,7 +70,10 @@ def process(img_rgb, v1_left, v1_right, v2_left, v2_right, corres_point_left,
     v3_normal = np.array(list(point_hc_to_point(v3)))
     pp_normal = np.array([pp_x, pp_y])
 
-    focal_square = - np.dot((v1_normal - pp_normal), (v2_normal - pp_normal))
+    # focal_square = - np.dot((v1_normal - pp_normal), (v2_normal - pp_normal))
+    focal_square = np.abs(np.dot((v1_normal - pp_normal), (v2_normal - pp_normal)))
+    print(f'Focal square = {focal_square}')
+
     ld_1 = -sqrt(lambda_1_square)
     ld_2 = sqrt(lambda_2_square)
     ld_3 = sqrt(lambda_3_square)

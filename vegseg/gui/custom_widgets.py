@@ -310,17 +310,31 @@ class DisplayCanvas(Frame):
 
     # TODO: This function help me to change the coordinate effect, this function then use to correct my coordinate
     #  problem !!!
-    def get_rect(self):
+    # Modify the function become get_line
+
+    def get_line(self):
         w, h = self.pil_image.size
         x0, y0 = self.canvas.coords(self.image_obj)
         minx = x0 - w / 2.0
         miny = y0 - h / 2.0
-        if self.rect:
-            rect = self.canvas.coords(self.rect)
-            rect = [rect[0] + abs(minx), rect[1] + abs(miny), rect[2] + abs(minx), rect[3] + abs(miny)]
-            return rect
+        if self.line:
+            line = self.canvas.coords(self.line)
+            line = [line[0] + abs(minx), line[1] + abs(miny), line[2] + abs(minx), line[3] + abs(miny)]
+            return line
         else:
             return None
+
+    # def get_rect(self):
+    #     w, h = self.pil_image.size
+    #     x0, y0 = self.canvas.coords(self.image_obj)
+    #     minx = x0 - w / 2.0
+    #     miny = y0 - h / 2.0
+    #     if self.rect:
+    #         rect = self.canvas.coords(self.rect)
+    #         rect = [rect[0] + abs(minx), rect[1] + abs(miny), rect[2] + abs(minx), rect[3] + abs(miny)]
+    #         return rect
+    #     else:
+    #         return None
 
 
 class Logger(Frame):

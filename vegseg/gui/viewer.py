@@ -258,7 +258,8 @@ class ImageViewer(Frame):
     def extract_text(self):
         if self.image is None:
             return
-        rect = self.canvas.get_rect()
+        rect = self.canvas.get_line()
+        print(f'Value of rect = {rect}')
         if rect is None:
             return
         self.clear()
@@ -287,6 +288,13 @@ class ImageViewer(Frame):
         image = image.annotated.rotate(self.rotate)
         self.canvas.update_image(image)
         simpledialog.askstring("Extract Text", "Text Extracted:", initialvalue=bbox['text'])
+
+    # THIS FUNCTION IS USE TO GET THE CORRECT COORDINATE OF LINE
+    def get_interaction_coord(self):
+        if self.image is None:
+            return
+        rect = self.canvas.get_line()
+        return rect
 
     def clear(self):
         if self.image is None:
