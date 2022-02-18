@@ -68,6 +68,7 @@ perform this Algorithm:
 - [x] I can not read User input text inside Entry in Tkinter: resolved, because I deleted it's value before read it (stupid mistake)
 - [ ] Check instance of image is added before running command in Add Property button.
 - [ ] Variable handler in Calibration Tab (reset button etc ...)
-- [ ] Break Tabs into Classes 
-- [ ] For Camera Calibration Tab, I need to save all possible case into the json for comparison purpose, let the user choose
-the appropriate params
+- [x] Break Tabs into Classes 
+- [ ] For Camera Calibration Tab, I need to save all possible case into the json for comparison purpose and then let the user choose
+the appropriate params.
+
