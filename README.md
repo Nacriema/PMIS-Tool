@@ -64,6 +64,15 @@ perform this Algorithm:
 ![](./readme_images/im6.png)
 
 
+## Result (Completed on July 5, 2022)
+
+I can combine the information from camera calibration step and the segmented image to render the 3d of the environment 
+where the camera is located. 
+
+![img.png](readme_images/img_7.png)
+![img.png](readme_images/img_8.png)
+
+
 ## Problems
 - [x] I can not read User input text inside Entry in Tkinter: resolved, because I deleted it's value before read it (stupid mistake)
 - [ ] Check instance of image is added before running command in Add Property button.
@@ -71,4 +80,5 @@ perform this Algorithm:
 - [x] Break Tabs into Classes 
 - [ ] For Camera Calibration Tab, I need to save all possible case into the json for comparison purpose and then let the user choose
 the appropriate params.
+- [ ] Improve Line Tracing V4, generate the grad grid **_dynamically_** when user input **init_points** value. (In my Opinion, v3 is better !)
 
